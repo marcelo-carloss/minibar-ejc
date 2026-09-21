@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        Você deseja confirmar a exclusão do produto: {{produto.nome}}?
+
+        <button type="submit">Confirmar exclusão</button>
+    </form>
+{% endblock %}
