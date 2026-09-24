@@ -4,6 +4,6 @@
     {% for produto in produtos %}
         <h1> {{produto.nome}} </h1> <a href="{% url 'editar_produto' produto.id %}">Editar</a>   <a href="{% url 'excluir_produto' produto.id %}">Excluir</a>
     {% endfor %}
-
+    <br>
     <a href="{% url 'criar_produto'%}">Criar produto</a>
 {% endblock %}

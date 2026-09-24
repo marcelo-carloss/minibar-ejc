@@ -4,7 +4,7 @@
     <form method="post">
         {% csrf_token %}
 
-        Você deseja confirmar a exclusão do produto: {{produto.nome}}?
+        Deseja excluir a venda de {{ venda.produto.nome }} ({{ venda.quantidade }}x) para {{ venda.pessoa.nome }}?
 
         <button type="submit">Confirmar exclusão</button>
     </form>

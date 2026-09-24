@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Salvar Venda</button>
+
+</form>
+<script>
+    const produtos = {{ produtos_json|safe }};
+    const produto = document.getElementById('id_produto');
+    const preco = document.getElementById('id_preco_unitario_praticado');
+
+    produto.addEventListener('change', function(evento) {
+        const produtoEscolhido = this.value;
+        const produtoEncontrado = produtos.find(function(p) { return p.id === parseInt(produtoEscolhido);
+        });
+
+        if (produtoEncontrado) {
+            preco.value = produtoEncontrado.preco_padrao
+        }
+    });
+</script>
+{% endblock %}

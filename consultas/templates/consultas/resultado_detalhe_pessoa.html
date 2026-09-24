@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3> {{ pessoa.nome }} - Circulo: {{ pessoa.get_circulo_display }} </h3>
+    {% for venda in vendas %}
+    <p> {{ venda.produto.nome }} ({{ venda.quantidade }}x) - Preço Únitario: {{ venda.preco_unitario_praticado}} </p>
+    <p> Vendido por: {{ venda.usuario }}        |{{ venda.data_hora }}|</p>
+    <p> Status: {% if venda.pago %} Pago {% else %} Pendente {% endif %} </p>
+    <p> Forma de pagamento: {{ venda.forma_pagamento }}</p>
+    <p>----------------------------------------------------------------------------------</p>
+    {% endfor %}
+    <p> ******* Valor Total: {{ valor_total }} |  Valor Pendente: {{  valor_pendente }} ******* </p>
+
+{% endblock %}

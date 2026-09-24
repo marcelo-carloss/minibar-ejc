@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <form method="get">
+        <input type="text" name="nome" placeholder="Buscar por nome" value="{{ request.GET.nome }}">
+        <button type="submit">Buscar</button>
+    </form>
+    <br>
+    {% for p in pessoa %}
+    <p> {{ p.nome }} - Circulo: {{ p.get_circulo_display }}</p> <a href="{% url 'detalhe_pessoa' p.id %}">Detalhes</a>
+    {% endfor %}
+{% endblock %}

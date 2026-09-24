@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProdutoForm
-
-from .forms import ProdutoForm
 from .models import Produto
 
 def listar_produtos(request):
