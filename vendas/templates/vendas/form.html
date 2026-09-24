@@ -9,6 +9,8 @@
     <button type="submit">Salvar Venda</button>
 
 </form>
+<br><br>
+<a href="{% url 'home'%}">Voltar ao Menu</a>
 <script>
     const produtos = {{ produtos_json|safe }};
     const produto = document.getElementById('id_produto');

@@ -2,13 +2,36 @@
 
 {% block content %}
     <h3> {{ pessoa.nome }} - Circulo: {{ pessoa.get_circulo_display }} </h3>
+    <p> ******* Valor Total: {{ valor_total }} |  Valor Pendente: {{  valor_pendente }} ******* </p>
+    {% if valor_pendente > 0 %}
+    <form method="post" action="{% url 'marcar_todas_pagas' pessoa.id %}">
+        {% csrf_token %}
+        <select name="forma_pagamento">
+            <option value="PIX">Pix</option>
+            <option value="DIN">Dinheiro</option>
+            <option value="CAR">Cartao</option>
+        </select>
+        <button type="submit">Marcar tudo como pago</button>
+    </form>
+    {% endif %}
     {% for venda in vendas %}
     <p> {{ venda.produto.nome }} ({{ venda.quantidade }}x) - Preço Únitario: {{ venda.preco_unitario_praticado}} </p>
     <p> Vendido por: {{ venda.usuario }}        |{{ venda.data_hora }}|</p>
     <p> Status: {% if venda.pago %} Pago {% else %} Pendente {% endif %} </p>
     <p> Forma de pagamento: {{ venda.forma_pagamento }}</p>
+    {% if not venda.pago %}
+    <form method="post" action="{% url 'marcar_venda_paga' venda.id %}">
+        {% csrf_token %}
+        <select name="forma_pagamento">
+            <option value="PIX">Pix</option>
+            <option value="DIN">Dinheiro</option>
+            <option value="CAR">Cartao</option>
+        </select>
+        <button type="submit">Marcar como pago</button>
+    </form>
+    {% endif %}
     <p>----------------------------------------------------------------------------------</p>
     {% endfor %}
-    <p> ******* Valor Total: {{ valor_total }} |  Valor Pendente: {{  valor_pendente }} ******* </p>
+    <a href="{% url 'home'%}">Voltar ao Menu</a> <a href="{% url 'buscar_pessoas'%}">Nova Consulta</a>
 
 {% endblock %}

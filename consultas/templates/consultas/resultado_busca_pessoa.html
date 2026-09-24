@@ -9,4 +9,6 @@
     {% for p in pessoa %}
     <p> {{ p.nome }} - Circulo: {{ p.get_circulo_display }}</p> <a href="{% url 'detalhe_pessoa' p.id %}">Detalhes</a>
     {% endfor %}
+    <br><br>
+    <a href="{% url 'home'%}">Voltar ao Menu</a> <a href="{% url 'criar_venda'%}">Criar Venda</a>
 {% endblock %}

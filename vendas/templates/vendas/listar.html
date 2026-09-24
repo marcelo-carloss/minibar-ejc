@@ -4,6 +4,6 @@
     {% for venda in vendas %}
 <p> {{venda.pessoa.nome}}/{% if venda.pessoa.circulo %}  {{venda.pessoa.get_circulo_display}} {% else %}  Sem circulo {% endif %}: Produto = {{venda.produto.nome}} - Quantidade = {{venda.quantidade}} Vendedor = {{venda.usuario}} - Situação = {% if venda.pago %}  Pago {% else %}  Pendente {% endif %} </p> <a href="{% url 'editar_venda' venda.id %}">Editar</a>   <a href="{% url 'excluir_venda' venda.id %}">Excluir</a>
     {% endfor %}
-    <br>
-    <a href="{% url 'criar_venda'%}">Criar venda</a>
+    <br> <br>
+    <a href="{% url 'criar_venda'%}">Criar venda</a> <a href="{% url 'home'%}">Voltar ao Menu</a> <a href="{% url 'buscar_pessoas'%}">Consultar Valores</a>
 {% endblock %}

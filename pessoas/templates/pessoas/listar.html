@@ -4,6 +4,6 @@
     {% for pessoa in pessoas %}
 <p> {{pessoa.nome}} - {% if pessoa.circulo %}  {{pessoa.get_circulo_display}} {% else %}  Sem circulo {% endif %} </p>  <a href="{% url 'editar_pessoa' pessoa.id %}">Editar</a>   <a href="{% url 'excluir_pessoa' pessoa.id %}">Excluir</a>
     {% endfor %}
-    <br>
-    <a href="{% url 'criar_pessoa'%}">Criar pessoa</a>
+    <br><br>
+    <a href="{% url 'criar_pessoa'%}">Criar pessoa</a> <a href="{% url 'home'%}">Voltar ao Menu</a>
 {% endblock %}
